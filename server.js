@@ -17,11 +17,18 @@ app.use(express.static("public"));
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 
 app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "notes.html"))
+  res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
+});
+
 //display notes
-app.get("/notes", (req, res) => res.json(noteData));
+app.get("/api/notes", (req, res) => res.json(noteData));
+
+//post notes
+app.post("/api/notes", (req, res) => noteData.push(req.body));
 
 //starts the server to begin listening
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
