@@ -22,5 +22,6 @@ app.get("/notes", (req, res) =>
 
 //display notes
 app.get("/notes", (req, res) => res.json(noteData));
+
 //starts the server to begin listening
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
