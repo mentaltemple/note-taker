@@ -20,22 +20,31 @@ app.get("/notes", (req, res) =>
   res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/index.html"));
-});
-
 //display notes
 app.get("/api/notes", (req, res) => res.json(noteData));
 
 //post notes
 app.post("/api/notes", (req, res) => {
-  //req.body is the new note. Add unique id
+  //req.body is the new note
   let newNote = req.body;
+  //readfile
+  let data = fs.readFileSync("./db/db.json", "utf-8");
 
+  console.log(data);
+
+  //Add unique id
+  newNote.id = noteData.length > 0 ? noteData[noteData.length - 1].id + 1 : 0;
+  //push new note into the array
   noteData.push(newNote);
-  fs.writeFile(JSON.stringify(noteData), { encoding: "utf-8" });
+
   //use fs.writefile to write updated array to db.json
+  fs.writeFileSync(JSON.stringify(noteData), { encoding: "utf-8" });
+
   //send a response to server
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 //starts the server to begin listening
