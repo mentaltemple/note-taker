@@ -25,13 +25,9 @@ Navigate to: https://ancient-badlands-76611.herokuapp.com/notes.html
 
 Click on the "Get Started" button. This will navigate to the Note Taker page. Add a title and text for your new note, click save. Click on the note to view previously stored notes!
 
-```md
-![alt text](Assets/images/note-taker-home.png)
-```
+![Homepage screen shot](./Assets/note-taker-home.png)
 
-```md
-![alt text](Assets/images/note-taker-notes.png)
-```
+![Note page screen shot](./Assets/note-taker-notes.png)
 
 ## Credits
 
