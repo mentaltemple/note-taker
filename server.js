@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// Basic route that first sends the user to the correct page
+// Basic routes that first sends the user to the correct page
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 
 app.get("/notes", (req, res) =>
@@ -28,7 +28,15 @@ app.get("*", (req, res) => {
 app.get("/api/notes", (req, res) => res.json(noteData));
 
 //post notes
-app.post("/api/notes", (req, res) => noteData.push(req.body));
+app.post("/api/notes", (req, res) => {
+  //req.body is the new note. Add unique id
+  let newNote = req.body;
+
+  noteData.push(newNote);
+  fs.writeFile(JSON.stringify(noteData), { encoding: "utf-8" });
+  //use fs.writefile to write updated array to db.json
+  //send a response to server
+});
 
 //starts the server to begin listening
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
