@@ -30,8 +30,6 @@ app.post("/api/notes", (req, res) => {
   //readfile
   let data = fs.readFileSync("./db/db.json", "utf-8");
 
-  console.log(data);
-
   //Add unique id
   newNote.id = noteData.length > 0 ? noteData[noteData.length - 1].id + 1 : 0;
   //push new note into the array
