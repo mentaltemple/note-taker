@@ -1,12 +1,12 @@
 [
   {
     "id": "0",
-    "title": "Test Title",
-    "text": "Test text"
+    "title": "Groceries",
+    "text": "Milk, eggs, cereal, bread"
   },
   {
     "id": "1",
-    "title": "Test Title1",
-    "text": "Test text2"
+    "title": "Mechanic",
+    "text": "Make appt for oil change"
   }
 ]
